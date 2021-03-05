@@ -1,13 +1,22 @@
 ---
 
-- name: INTERFACE
+- name: interface
   hosts: routers
   gather_facts: false
-  connection: network_cli
   
- 
   tasks:
-    - name: generate interface config
-      template: 
-        src="/etc/ansible/jinja2-template/interface.j2" 
-        dest=/etc/ansible/config/{{ inventory_hostname }}_interface.txt
+    - name: configure interface
+      ios_interface:
+        name: FastEthernet1/0
+        description: test-interface
+        duplex: full
+
+    - name: configure loopback
+      ios_interface:
+        name: Loopback9
+        state: present
+
+    - name: make interface up
+      ios_interface:
+        name: FastEthernet1/0
+        enabled: true

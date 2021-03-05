@@ -1,0 +1,21 @@
+--- 
+- 
+  gather_facts: false
+  hosts: routers
+  name: interface
+  tasks: 
+    - 
+      ios_l3_interfaces: 
+        config: 
+          - 
+            ipv4: 
+              - 
+                address: 192.168.0.1/24
+            name: FastEthernet1/0
+          - 
+            ipv4: 
+              - 
+                address: 1.1.1.1/32
+            name: Loopback9
+        state: merged
+      name: "Merge provided configuration with device configuration"

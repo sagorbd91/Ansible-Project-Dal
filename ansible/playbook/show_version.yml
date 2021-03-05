@@ -9,7 +9,7 @@
       ios_command:
         commands: 
         - show version
-        - show interface
+        - show ip interface brief
       register: print_output
 
     - debug: var=print_output.stdout_lines
