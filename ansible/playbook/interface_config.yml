@@ -1,0 +1,13 @@
+---
+
+- name: INTERFACE
+  hosts: routers
+  gather_facts: false
+  connection: network_cli
+  
+ 
+  tasks:
+    - name: generate interface config
+      template: 
+        src="/etc/ansible/jinja2-template/interface.j2" 
+        dest=/etc/ansible/config/{{ inventory_hostname }}_interface.txt

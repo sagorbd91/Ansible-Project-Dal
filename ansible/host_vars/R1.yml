@@ -1,0 +1,10 @@
+---
+ 
+interface:
+  Loopback0:
+    ip: 1.1.1.1
+    mask: 255.255.255.255
+  FastEthernet1/0:
+    ip: 10.0.1.1
+    mask: 255.255.255.252
+    desc: TO_ISP_A
