@@ -1,0 +1,30 @@
+Steps
+=========================
+
+1) Assign Ip with DHCP in ubuntu
+2) update package (python/ansible)
+3) assign routers in inventory 
+4) assign ansible username and password in group vars
+5) generate ssh public and private key in ubuntu (ssh-keygen)
+
+
+
+5) Assign IP address in Router
+6) set domain name
+7) configure line vty to accept ssh
+#line vty 0 4
+#transport input ssh
+#login local
+
+8) create rsa on router # crypto key generate rsa
+9) enable ssh version 2 # ip ssh ver 2
+
+Step 10 ) Now fold the ssh public key and copy the key to router pubkey string
+Ubuntu # fold -b -w 72 /root/.ssh/id_rsa.pub
+
+Step 11) Lets copy the public key into router
+ip ssh pubkey-chain 
+#username cisco
+#key-string  
+
+Step 12) Now check the ssh connection
