@@ -9,4 +9,4 @@ ansible_become: false
 become: yes
 ansible_python_interpreter: '/usr/bin/python3'
 inventory_dir: '/etc/ansible/host_vars'
-
+ansible_become_method: enable

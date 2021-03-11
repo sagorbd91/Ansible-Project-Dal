@@ -1,0 +1,26 @@
+--- 
+- 
+  connection: local
+  hosts: switches
+  tasks: 
+    - 
+      ios_config: 
+        authorize: true
+        lines: 
+          - "vlan {{ vlan_id }}"
+      name: "Configure VLAN ID"
+    - 
+      ios_config: 
+        authorize: true
+        lines: 
+          - "name {{ vlan_name }}"
+        parents: "vlan {{ vlan_id }}"
+      name: "Configure VLAN Name"
+    - 
+      ios_command: 
+        authorize: true
+        commands: "show vlan brief"
+      name: "Show VLAN"
+      register: show_vlan
+    - 
+      debug: var=show_vlan.stdout_lines
