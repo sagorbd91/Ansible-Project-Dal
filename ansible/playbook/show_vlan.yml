@@ -1,0 +1,15 @@
+--- 
+- 
+  gather_facts: false
+  hosts: switches
+  name: "multiple commands for switches"
+  tasks: 
+    - 
+      ios_command: 
+        commands: 
+          - "show vlan brief"
+          - "show ip int brief"
+      name: "show vlan and interfaces"
+      register: print_output
+    - 
+      debug: var=print_output.stdout_lines

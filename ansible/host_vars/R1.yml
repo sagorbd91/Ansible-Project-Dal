@@ -5,3 +5,4 @@ first_int_ip: "192.168.0.1/24"
 
 loopback_int: "Loopback0"
 loopback_int_ip: "1.1.1.1/32"
+inventory_hostname: "R1"

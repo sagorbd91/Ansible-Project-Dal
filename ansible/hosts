@@ -39,6 +39,12 @@
 [routers]
 R1 ansible_host=192.168.122.181
 #R2 ansible_host=192.168.122.182
+
+[switches]
+SW1 ansible_host=192.168.0.2
+#SW2 ansible_host=192.168.1.2
+
+
 # Here's another example of host ranges, this time there are no
 # leading 0s:
 

@@ -1,0 +1,17 @@
+---
+- name: configure OSPF on ALL
+  hosts: routers
+  gather_facts: false
+
+  tasks:
+    - name: enable ospf
+      ios_config:
+        authorize: yes
+        parents: router ospf 1
+        lines:
+          - router-id 1.1.1.1
+          - network 192.168.122.0 255.255.255.0 area 0
+          - network 192.168.0.0 255.255.255.0 area 0
+
+      register: print_output
+    - debug: var=print_output

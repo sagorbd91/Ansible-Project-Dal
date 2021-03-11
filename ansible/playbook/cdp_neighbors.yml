@@ -1,0 +1,12 @@
+--- 
+- 
+  gather_facts: false
+  hosts: switches
+  name: "Get CDP Neighbours"
+  tasks: 
+    - 
+      name: "show cdp neighbors"
+      raw: "show cdp neighbors"
+      register: print_output
+    - 
+      debug: var=print_output.stdout_lines

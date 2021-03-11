@@ -1,0 +1,11 @@
+---
+
+- name: Get CDP Neighbours
+  hosts: switches
+  gather_facts: false
+
+  tasks:
+    - name: "show MAC table"
+      raw: "show mac address-table"
+      register: print_output
+    - debug: var=print_output.stdout_lines
