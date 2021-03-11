@@ -1,0 +1,18 @@
+---
+- 
+  gather_facts: false
+  hosts: switches
+  tasks:
+    - name: Create VLAN ID
+      ios_config:
+        lines:
+          - vlan "{{ vlan_id }}"
+    - name: Configure VLAN NAME
+      ios_vlan:
+        vlan_id: "{{ item.id }}"
+        name: "{{ item.name }}"
+        state: present
+
+      with_items:
+        - { id: 10, name: Inertia }
+        - { id: 20, name: Motion }

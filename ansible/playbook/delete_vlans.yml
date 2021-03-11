@@ -1,0 +1,11 @@
+--- 
+- gather_facts: false
+  hosts: switches
+  tasks: 
+    - ios_vlan: 
+        state: absent
+        vlan_id: "{{ item }}"
+        with_items: 
+          - 10
+          - 20
+      name: "Delete vlan"
