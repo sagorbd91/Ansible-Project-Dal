@@ -1,0 +1,15 @@
+---
+
+- name: interface
+  hosts: routers
+  gather_facts: false
+  
+  tasks:
+    - name: make first interface down
+      net_interface:
+        name: "{{ first_int }}"
+        enabled: False
+    - name: make first interface down
+      net_interface:
+        name: "{{ loopback_int }}"
+        enabled: False
