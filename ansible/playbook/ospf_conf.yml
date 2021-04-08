@@ -3,15 +3,22 @@
   hosts: routers
   gather_facts: false
 
+  vars:
+    cli:
+      username: cisco
+      password: redhat
+
   tasks:
     - name: enable ospf
       ios_config:
+        provider: "{{ cli }}"
         authorize: yes
         parents: router ospf 1
         lines:
           - router-id 1.1.1.1
-          - network 192.168.122.0 255.255.255.0 area 0
+          - network 10.0.0.0 255.255.255.0 area 0
           - network 192.168.0.0 255.255.255.0 area 0
+          - network 20.0.0.0 255.255.255.0 area 0
 
       register: print_output
     - debug: var=print_output

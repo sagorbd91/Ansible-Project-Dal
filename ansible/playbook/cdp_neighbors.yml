@@ -1,12 +1,14 @@
 --- 
-- 
+- name: Get CDP info
   gather_facts: false
-  hosts: switches
-  name: "Get CDP Neighbours"
+  hosts: all
+  
   tasks: 
-    - 
-      name: "show cdp neighbors"
-      raw: "show cdp neighbors"
+    - name: show cdp neighbors
+      ios_command:
+        commands: 
+        - show cdp neighbors
+
       register: print_output
-    - 
-      debug: var=print_output.stdout_lines
+
+    - debug: var=print_output.stdout_lines

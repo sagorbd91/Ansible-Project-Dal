@@ -1,0 +1,21 @@
+- name: confgiure Access Vlans
+  hosts: switches
+  gather_facts: false
+
+  vars:
+    cli:
+      username: cisco
+      password: redhat
+  
+  tasks:
+    - name: Create vlans
+      ios_config:
+        provider: "{{ cli }}"
+        authorize: yes
+        lines:
+          - vlan 10
+          - vlan 20
+
+      register: print_output
+
+    - debug: var=print_output

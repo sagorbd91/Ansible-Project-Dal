@@ -1,0 +1,20 @@
+---
+
+- name: Switchport module test
+  hosts: switches
+  gather_facts: false
+
+
+  tasks:
+    - name: Ensure Ether1/2 is in default switchport state
+      ios_config:
+        commands:
+        - interface ethernet1/2
+        - switchport access vlan 10
+        - switchport mode access
+        - interface ethernet1/3
+        - switchport access vlan 20
+        - switchport mode access
+        - interface ethernet1/1
+        - switchport mode trunk
+
